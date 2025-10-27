@@ -5,6 +5,8 @@ import Swal from "sweetalert2"; // Import SweetAlert2
 
 export default function List() {
     const [kategori, setKategori] = useState([]);
+    const [data, setData] = useState([]); 
+
 
     useEffect( () => {
         axios
