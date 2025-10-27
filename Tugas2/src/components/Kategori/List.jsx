@@ -12,7 +12,7 @@ export default function List() {
         axios
         .get('https://tugas1-pw2-if3b-2428250004.vercel.app/api/api/kategori')
         .then((response) => {
-            setKategori(response.data.data);
+            setKategori(response.data.data.nama);
         })
         .catch((error) => {
             console.error("Failed to fetch kategori", error);
