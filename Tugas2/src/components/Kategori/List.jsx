@@ -12,12 +12,13 @@ export default function List() {
         axios
         .get('https://tugas1-pw2-if3b-2428250004.vercel.app/api/api/kategori')
         .then((response) => {
-            setKategori(response.data.data.nama);
+            console.log(response.data)
+            setKategori(response.data.nama);
         })
         .catch((error) => {
             console.error("Failed to fetch kategori", error);
         });
-     }, []);
+     }, [])
 
      const handleDelete = (id, nama) => {
         Swal.fire({
@@ -44,7 +45,7 @@ export default function List() {
             });
         }
     });
-};
+}
     return (
         <div>
                 <h2>List Kategori</h2>
@@ -76,5 +77,5 @@ export default function List() {
                     </tbody>
             </table>
         </div>
-    );
+    )
 }
