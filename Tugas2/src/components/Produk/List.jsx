@@ -66,9 +66,9 @@ export default function List() {
                                           >
                                        Hapus
                                     </button>
-                                    <navLink to={`edit/${data.id}`} className="btn btn-warning ms-2">
+                                    <NavLink to={`edit/${data.id}`} className="btn btn-warning ms-2">
                                        Edit
-                                    </navLink>
+                                    </NavLink>
                                  </td>
                             </tr>
                                ))}
