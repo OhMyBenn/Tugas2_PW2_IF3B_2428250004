@@ -70,7 +70,7 @@ export default function List() {
                                 Hapus
                                 </button>
                                 <NavLink to={`edit/${data.id}`} className="btn btn-warning
-                                btn-sm">Edit</NavLink>
+                                ms-2">Edit</NavLink>
                             </td>
                         </tr>
                         ))}
