@@ -58,7 +58,6 @@ function App() {
           {/* Route ke halaman Produk Edit */}
         </Routes>
       </Suspense>
-      <div>&copy; 2025 Benn</div>
     </Router>
   )
 }
