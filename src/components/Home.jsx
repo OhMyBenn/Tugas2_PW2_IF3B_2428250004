@@ -14,7 +14,7 @@ export default function Home() {
 
         {/* Deskripsi singkat */}
         <p className="text-gray-600 text-lg md:text-xl mb-8">
-          Kelola data kategori dan produk dengan cepat dan efisien menggunakan React + Vite.
+          Menyediakan semua yang dibutuhkan.
         </p>
 
         {/* Tombol navigasi */}
