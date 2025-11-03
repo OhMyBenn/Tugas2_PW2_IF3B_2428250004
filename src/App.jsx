@@ -8,6 +8,7 @@ const KategoriEdit = React.lazy(() => import ('./components/Kategori/Edit'))
 const ProdukList = React.lazy(() => import('./components/Produk/List'));
 const ProdukCreate = React.lazy(() => import('./components/Produk/Create'));
 const ProdukEdit = React.lazy(() => import ('./components/Produk/Edit'));
+const ProdukKategori = React.lazy(() => import ('./components/Kategori/ProdukKategori'));
 
 function App() {
   
@@ -56,6 +57,8 @@ function App() {
           {/* Route ke halaman Produk Create */}
           <Route path="/produk/edit/:id" element={<ProdukEdit />}/>
           {/* Route ke halaman Produk Edit */}
+          <Route path="/kategori/:id" element={<ProdukKategori />} />
+          {/* Route ke halaman Produk berdasarkan Kategori */}
         </Routes>
       </Suspense>
     </Router>

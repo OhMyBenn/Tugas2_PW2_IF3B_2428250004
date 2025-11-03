@@ -68,6 +68,9 @@ export default function List() {
                                  <tr key={data.id}>
                                    <td>{data.nama}</td> {/* Menampilkan nama Kategori*/}
                                    <td>
+                                      <NavLink to={`${data.id}`} className="btn btn-primary me-2">
+                                         Detail
+                                      </NavLink>
                                        <button onClick={() => handleDelete(data.id, data.nama)}
                                             className="btn btn-danger"
                                             >
