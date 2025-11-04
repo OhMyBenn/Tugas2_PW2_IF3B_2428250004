@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState  } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2"; // Import SweetAlert2
 
 export default function List() {
   const [kategori, setKategori] = useState([]);
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -84,6 +86,20 @@ export default function List() {
                                  ))}
                            </tbody>
                    </table>
+                   <button
+                    className="btn btn-info mb-3"
+                    onClick={() => navigate("/")}
+                  >
+                  Kembali
+                  </button>
+
+                  <button
+        className="btn btn-dark ms-2 mb-3"
+        onClick={() => navigate("/produk")}
+      >
+        Produk
+      </button>
               </div>
+              
       );
   }
