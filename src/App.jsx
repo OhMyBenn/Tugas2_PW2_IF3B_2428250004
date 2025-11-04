@@ -1,5 +1,8 @@
-import React, {Suspense} from "react"; 
+import React, {Suspense, useState } from "react"; 
 import { BrowserRouter as Router, Route, Routes, NavLink } from "react-router-dom";
+import Login from "./components/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Logout from "./components/Logout";
 
 const Home = React.lazy(() => import('./components/Home'));
 const KategoriList = React.lazy(() => import('./components/Kategori/List'));
@@ -9,9 +12,10 @@ const ProdukList = React.lazy(() => import('./components/Produk/List'));
 const ProdukCreate = React.lazy(() => import('./components/Produk/Create'));
 const ProdukEdit = React.lazy(() => import ('./components/Produk/Edit'));
 const ProdukKategori = React.lazy(() => import ('./components/Kategori/ProdukKategori'));
+const Login = React.lazy(() => import ('./components/Login'));
 
-function App() {
-  
+const App = () => {
+  const [token, setToken] = useState(localStorage.getItem("authToken") || null);
 
   return (
     <Router>
@@ -35,9 +39,15 @@ function App() {
           <NavLink className="nav-link" to="/produk">Produk</
           NavLink>
         </li>
-        {/* <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li> */}
+        {token ? ( // Tampilkan Logout jika token ada
+          <NavLink className="nav-link" to="/logout">
+            Logout
+          </NavLink>
+        ) : ( 
+          <NavLink className="nav-link" to="/login">
+            Login
+          </NavLink>
+        )}
       </ul>
     </div>
   </div>
@@ -59,6 +69,19 @@ function App() {
           {/* Route ke halaman Produk Edit */}
           <Route path="/kategori/:id" element={<ProdukKategori />} />
           {/* Route ke halaman Produk berdasarkan Kategori */}
+          <Route path="/login" element={<Login setToken={setToken} />} /> 
+          {/* Route untuk halaman Login */}
+          <Route path="/logout" element={<Logout />} />
+          {/* Route untuk halaman Logout */}
+          {/* Protected routes */} 
+          <Route
+            path="/protected"
+            element={
+              <ProtectedRoute>
+                <ProdukList />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Suspense>
     </Router>
