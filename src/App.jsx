@@ -1,6 +1,6 @@
 import React, {Suspense, useState } from "react"; 
 import { BrowserRouter as Router, Route, Routes, NavLink } from "react-router-dom";
-import Login from "./components/Login";
+import Loader from "./components/Louder";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Logout from "./components/Logout";
 
@@ -19,27 +19,27 @@ const App = () => {
 
   return (
     <Router>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+  <div className="container-fluid">
     <a className="navbar-brand" href="/">Vitmart</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
+    <div className="container-fluid" id="navbarNav">
+      <ul className="navbar-nav">
+        <li className="nav-item">
           <NavLink className="nav-link active" aria-current="page" to ="/"href="">Home</
           NavLink>
         </li>
-        <li class="nav-item">
+        <li className="nav-item">
           <NavLink className="nav-link" to="/kategori">Kategori</
           NavLink>
         </li>
-        <li class="nav-item">
+        <li className="nav-item">
           <NavLink className="nav-link" to="/produk">Produk</
           NavLink>
         </li>
-        {token ? ( // Tampilkan Logout jika token ada
+        <li> {token ? ( // Tampilkan Logout jika token ada
           <NavLink className="nav-link" to="/logout">
             Logout
           </NavLink>
@@ -48,20 +48,21 @@ const App = () => {
             Login
           </NavLink>
         )}
+        </li>
       </ul>
     </div>
   </div>
 </nav> 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} /> {/* Route untuk halaman Home */}
-          <Route path="/kategori" element={<KategoriList />} />
+          {/* <Route path="/kategori" element={<KategoriList />} /> */}
           {/* Route ke halaman Kategori List */}
           <Route path="/kategori/create" element={<KategoriCreate />} />
           {/* Route ke halaman Kategori Create */}
           <Route path="/kategori/edit/:id" element={<KategoriEdit />}/>
           {/* Route ke halaman Kategori Edit */}
-          <Route path="/produk" element={<ProdukList />} />
+          {/* <Route path="/produk" element={<ProdukList />} /> */}
           {/* Route ke halaman Produk List */}
           <Route path="/produk/create" element={<ProdukCreate />} />
           {/* Route ke halaman Produk Create */}
@@ -73,9 +74,17 @@ const App = () => {
           {/* Route untuk halaman Login */}
           <Route path="/logout" element={<Logout />} />
           {/* Route untuk halaman Logout */}
-          {/* Protected routes */} 
+          {/* Protected routes */}
           <Route
-            path="/protected"
+            path="/kategori"
+            element={
+              <ProtectedRoute>
+                <KategoriList />
+              </ProtectedRoute>
+            }
+          /> 
+          <Route
+            path="/produk"
             element={
               <ProtectedRoute>
                 <ProdukList />
