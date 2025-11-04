@@ -60,6 +60,12 @@ export default function Edit() {
   return (
     <div className="container mt-5">
       <h2 className="mb-4">Edit Kategori</h2>
+      <button
+        className="btn btn-info mb-3"
+        onClick={() => navigate("/kategori")}
+      >
+        Kembali
+      </button>
       {/* Jika ada pesan error, tampilkan dalam alert bootstrap */}
       {error && <div className="alert alert-danger">{error}</div>}
       {/* Jika ada pesan sukses, tampilkan dalam alert bootstrap */}
