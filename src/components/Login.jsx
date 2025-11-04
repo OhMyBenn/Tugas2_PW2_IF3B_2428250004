@@ -15,7 +15,7 @@ export default function Login() {
     e.preventDefault(); // Mencegah form melakukan submit secara default yang akan me-refresh halaman
 
     axios
-      .post("https://project-apiif-3-b.vercel.app/api/api/login", {
+      .post("https://tugas1-pw2-if3b-2428250004.vercel.app/api/api/login", {
         // Melakukan request POST ke API login
         email, // Mengirimkan email yang telah dimasukkan pengguna
         password, // Mengirimkan password yang telah dimasukkan pengguna
@@ -25,7 +25,7 @@ export default function Login() {
         const token = response.data.token; // Mengambil token dari response data API
         localStorage.setItem("authToken", token); // Menyimpan token ke localStorage untuk keperluan autentikasi di sesi berikutnya
 
-        navigate("/fakultas"); // Mengarahkan pengguna ke halaman /fakultas setelah berhasil login
+        navigate("/"); // Mengarahkan pengguna ke halaman /fakultas setelah berhasil login
         // window.location.href = "/fakultas"; // Mengarahkan pengguna ke halaman /fakultas setelah login berhasil
       })
       .catch((error) => {
